@@ -1,0 +1,7 @@
+{
+  "name": "vTender",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

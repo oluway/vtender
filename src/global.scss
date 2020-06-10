@@ -1,13 +1,4 @@
-/*
- * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
- */
+
 
 /* Core CSS required for Ionic components to work properly */
 @import "~@ionic/angular/css/core.css";
@@ -24,3 +15,49 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+
+ion-item {
+    --border-color: transparent;
+      border-radius: 13px;
+      color: midnightblue;
+  }
+
+  .card-content-md {
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 13px;
+    padding-bottom: 22px;
+    font-size: 14px;
+    color: #000;
+    
+    line-height: 1.5;
+}
+
+.ion-color-primary {
+    --ion-color-base: #4854e0 !important;
+    --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
+    --ion-color-contrast: var(--ion-color-primary-contrast, #fff) !important;
+    --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
+    --ion-color-shade: #e40eca !important;
+    --ion-color-tint: #cf3c4f !important;
+}
+.title {
+    font-weight: 600;
+    font-size: 13px
+}
+
+.card-content-md {
+   border-radius: 10px;
+}
+
+ion-card {
+    --ion-background-color: #ffc107!important;
+ }
+
+ icon-inner {
+    color: #ffc107!important;
+ }
+ ion-tab-button {
+    color: #4854e0 !important;
+ }

@@ -1,0 +1,23 @@
+.introtest {
+  color: #000;
+  font-size: 16px;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.danger {
+  background-color: orangered;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 16px;
+  color: #fff;
+}
+.olu {
+  color: #000;
+}
+.resize {
+  height: 100px;
+  margin-left: 29px;
+}
+@media (min-width: 576px){
+  .jumbotron {
+      padding: 0rem 4rem;
+  }
+  }

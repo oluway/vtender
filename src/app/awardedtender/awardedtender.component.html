@@ -1,0 +1,92 @@
+
+<div class="col-lg-12 mb-4" >
+  <div class="row" >
+
+    <div class="col card shadow border-left-olu backg">
+      <div class="row">
+        <div class="col card shadow text-center">
+          <p class="tendernumb introtest"><b>Tender Number</b><br><span class="olutext"> {{ tenderNumber }}</span></p>
+        </div>
+        <div class="col card shadow text-center">
+          <p class="status introtest"><b>Tender Status</b><br><span class="olutext "> {{ tenderStatus }}</span></p>
+        </div>
+        <div class="col card shadow text-center">
+          <p class="pointawared introtest"><b>Awarded Point</b><br><span class="olutext "> {{ awardedPoint }}</span></p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col text-primary-new">
+      <div class="card shadow ">
+        <b>Google My Business Validator</b>
+        <div class="list-group">
+          <span class="list-group-item introtest">{{name}}
+          </span>
+          <span class="list-group-item introtest">{{formattedAddress}}
+          </span>
+        </div>
+        <div style="font-size: 14px"
+           *ngFor="let item of googleObj introtest">
+                         {{item.name}}
+      </div>
+      <span class="list-group-item introtest" style="color: red; font-weight: bold ">{{googleAlert}}
+      </span>
+      </div>
+    </div>
+
+            <div class="col">
+              <div class="card-header  text-primary-new">
+                <div class="detailscubmited">
+                </div>
+                <h6 class="m-0 font-weight-bold introtest">FRAUD DETECTOR </h6>
+              </div>
+                  <div class="card-body">
+                    <h4 class="small font-weight-bold introtest">Company Address Validation <span class="float-right introtest">{{pointScore}}</span></h4>
+                    <div class="progress ">
+                      <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold introtest">Applied Count Database <span class="float-right">{{ applyCount }}</span></h4>
+                    <div class="progress ">
+                      <div class="progress-bar bg-warning introtest" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold introtest">Winning Count Database <span class="float-right"> {{winningCount}}</span></h4>
+                    <div class="progress ">
+                      <div class="progress-bar" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <h4 class="small font-weight-bold introtest">Total <span class="float-right">{{totalScore}}</span></h4>
+                    <div class="progress mb-4">
+                      <div class="progress-bar bg-info" role="progressbar" style="width: 97%" aria-valuenow="97" aria-valuemin="0" aria-valuemax="97"></div>
+                    </div>
+                    <div class="analysis">
+                      <p class="pointawared introtest">vTender Analysis</p>
+                      <a routerLink="/home" class="btn btn-primary">Check Another Tender</a>
+                    </div>
+                  </div>
+            </div>
+
+            <div class="col">
+                <div class="card shadow ">
+              <div class="list-group ">
+                <span  class="list-group-item active institution introtest">
+                  INSTITUTION DETAILS
+                </span>
+                <a  class="list-group-item introtest">{{ nameOfInstitution}}</a>
+                <a class="list-group-item introtest">{{InstitutionPersonPhone}} </a>
+                <a  class="list-group-item introtest">{{InstitutionContactPerson}}  </a>
+                <a class="list-group-item introtest"> {{InstitutionPersonPhone}}  </a>
+                <a  class="list-group-item introtest"> {{InstitutionPersonEmail}} </a>
+
+              </div>
+                </div>
+            </div>
+
+</div>
+</div>
+
+<div class="footer introtest">
+  <p >Team-279 | inspired by Andela & Facebook</p>
+</div>

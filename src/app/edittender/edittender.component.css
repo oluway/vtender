@@ -1,0 +1,16 @@
+@media (min-width: 576px){
+.jumbotron {
+    padding: 1rem 15rem;
+}
+}
+.form-group {
+  margin-bottom: -1rem;
+}
+.text-center {
+  font-weight: bold;
+  font-size: 35px;
+}
+select {
+  word-wrap: normal;
+  margin-top: 45px;
+}

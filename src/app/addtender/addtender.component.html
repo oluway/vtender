@@ -1,0 +1,300 @@
+
+<p> Welcome <b>Username</b> <a routerLink="/viewcompanies">COMPANY PORTAL</a> </p>
+
+<div class="container">
+  <div class="row">
+     <div class="col md-12">
+         <div class="jumbotron p-3">
+         <h2>Manage <b>Tenders</b><button type="button" class="btn btn-success float-right" data-toggle="modal" data-target=".bd-example-modal-lg"> Add New Tender</button></h2>
+         <h6 *ngIf="tenderAdded">New Tender Number Has Been Added</h6>
+         <ul class="nav nav-tabs">
+            <li class="nav-item">
+              <a class="nav-link active" data-toggle="tab" href="#tenderinfor">Tenders Information</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#contactperson">Contact Person</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#winner">Winner Information</a>
+            </li>
+          </ul>
+          <div id="myTabContent" class="tab-content">
+              <div class="tab-pane fade active show" id="tenderinfor">
+                  <p>Tender information Details</p>
+                  <table class="table table-hover table-dark">
+             <tr>
+               <th>Tender Number</th>
+               <th>Description</th>
+               <th>Category</th>
+               <th>Date Published</th>
+               <th>Closing Date</th>
+               <th>Status</th>
+               <th>Edit | Delete</th>
+              <!-- <th></th> -->
+           </tr>
+
+           <tr *ngFor="let tender of tenders">
+              <td>{{tender.tenderNumber}}</td>
+              <td>{{tender.tenderDescription}} </td>
+              <td>{{tender.category}}</td>
+              <td>{{tender.datePublished}}</td>
+              <td>{{tender.closingDate}}</td>
+              <td>{{tender.tenderStatus}}</td>
+              <td>
+                <a  class="btn btn-warning btn-xs" routerLink="/edittender" [state]="{ data: tender._id }" >Update</a>
+                <a class="btn btn-danger btn-xs" (click)="delete(tender._id)">Delete</a>
+              </td>
+           </tr>
+          <tbody id="tender-list">
+
+          </tbody>
+        </table>
+              </div>
+              <div class="tab-pane fade " id="contactperson">
+                <p>Contact Details</p>
+                <table class="table table-hover table-dark">
+                  <tr>
+                      <th>Tender Number</th>
+                      <th>Contact Person Name</th>
+                      <th>Email</th>
+                      <th>Phone Number</th>
+
+                     <!-- <th></th> -->
+                  </tr>
+
+                  <tr *ngFor="let tender of tenders">
+                     <td>{{tender.tenderNumber}}</td>
+                     <td>{{tender.InstitutionContactPerson}}</td>
+                     <td>{{tender.InstitutionPersonEmail}}</td>
+                     <td>{{tender.InstitutionPersonPhone}}</td>
+
+
+                  </tr>
+                 <tbody id="contactperson-list">
+
+                 </tbody>
+               </table>
+              </div>
+
+              <div class="tab-pane fade" id="winner">
+                  <p>winner Information Details</p>
+                  <table class="table table-hover table-dark">
+                    <tr>
+                        <th>Tender Number</th>
+                        <th>Awarded Point</th>
+                        <th>Company Name</th>
+                        <th>Company Registration No</th>
+                        <th>Director(s)</th>
+                        <th>Company Address</th>
+                        <th>Contact Number</th>
+
+                       <!-- <th></th> -->
+                    </tr>
+
+                    <tr *ngFor="let tender of tenders">
+                       <!-- <td>{{tenderNumbers}}</td> -->
+                       <td>{{tender.tenderNumber}}</td>
+                       <td>{{tender.awardedPoint}}</td>
+
+                    </tr>
+                   <tbody id="tender-list">
+
+                   </tbody>
+                 </table>
+              </div>
+          </div>
+
+
+
+        </div>
+
+        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">ADD TENDER INFORMATION</h4>
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button> -->
+              </div>
+              <div class="modal-body">
+                <form #tenderForm="ngForm" (ngSubmit)="createTender(tenderForm.value)"  autocomplete="off">
+                  <div class="form-group">
+                     <div class="row">
+                       <div class="col">
+                        <input #tenderNumber="ngModel" type="text"  placeholder="Tender Number" class="form-control" name="tenderNumber" ngModel required>
+                       <span *ngIf="tenderNumber.invalid && tenderNumber.touched" class="error">Tender number is required</span>
+                      </div>
+                       <div class="col">
+                        <input #category="ngModel" type="text" placeholder="Category" class="form-control" name="category" ngModel required>
+                        <span *ngIf="category.invalid && category.touched" class="error">Category is required</span>
+                      </div>
+                      <div class="col">
+
+
+                        <div class="md-form">
+                          <select placeholder="Choose your option" label="Example label" ngModel required name="tenderStatus">
+                            <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+                          </select>
+                        </div>
+
+
+                      </div>
+                     </div>
+                  </div>
+
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col">
+                        <label>Tender Description</label>
+                        <input #tenderDescription="ngModel" type="text"  class="form-control" name="tenderDescription" ngModel required>
+                        <span *ngIf="tenderDescription.invalid && tenderDescription.touched" class="error">Tender description is required</span>
+                      </div>
+                      <div class="col">
+                        <label>Date Published</label>
+                        <input #datePublished="ngModel" type="date" class="form-control" name="datePublished" ngModel required>
+                        <span *ngIf="datePublished.invalid && datePublished.touched" class="error">Publish date is required</span>
+                      </div>
+                      <div class="col">
+                        <label>Closing Date</label>
+                        <input #closingDate="ngModel"  type="date" class="form-control" name="closingDate" ngModel required>
+                        <span *ngIf="closingDate.invalid && closingDate.touched" class="error">Closing date is required</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+
+                  </div>
+
+                  <div class="form-group">
+                    <h4 class="modal-title">CONTACT PERSON DETAILS</h4>
+                   <div class="row">
+                    <div class="col">
+                      <input #InstitutionContactPerson="ngModel" type="text" placeholder="Name"class="form-control" name="InstitutionContactPerson" ngModel required>
+                      <span  *ngIf="InstitutionContactPerson.invalid && InstitutionContactPerson.touched" class="error">Name is required</span>
+                    </div>
+                     <div class="col">
+                      <input #InstitutionPersonEmail="ngModel"  type="email" required placeholder="Email"  class="form-control" name="InstitutionPersonEmail" ngModel>
+                      <span *ngIf="InstitutionPersonEmail.invalid && InstitutionPersonEmail.touched" class="error">Email address is required</span>
+                    </div>
+                     <div class="col">
+                      <input #InstitutionPersonPhone="ngModel" type="number" placeholder="Institution Phone Number" class="form-control" name="InstitutionPersonPhone" ngModel required>
+                      <span *ngIf="InstitutionPersonPhone.invalid && InstitutionPersonPhone.touched" class="error">Phone number is required</span>
+                    </div>
+                   </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input type="submit" [disabled]="!tenderForm.form.valid" class="btn btn-primary" value="Add Tender">
+                  </div>
+        </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </div>
+<!-- END OF CREATE TENDER BLOCK MODAL-->
+
+<!-- BEGINNING OF EDIT TENDER MODAL-->
+<div id="olu"  class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">UPDATE TENDER INFORMATION</h4>
+        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <form #tenderForm="ngForm" (ngSubmit)="createTender(tenderForm.value)"  autocomplete="off">
+          <div class="form-group">
+             <div class="row">
+               <div class="col">
+                <input #tenderNumber="ngModel" type="text" value="{{tenderNumber}}" class="form-control" name="tenderNumber" ngModel required>
+               <span *ngIf="tenderNumber.invalid && tenderNumber.touched" class="error">Tender number is required</span>
+              </div>
+               <div class="col">
+                <input #category="ngModel" type="text" value="etr" class="form-control" name="category" ngModel required>
+                <span *ngIf="category.invalid && category.touched" class="error">Category is required</span>
+              </div>
+              <div class="col">
+
+            <select #tenderStatus="ngModel" name="tenderStatus" value="what is here" ngModel required>
+              <span *ngIf="tenderStatus.invalid && tenderStatus.touched" class="error"> Tender status is required</span>
+              <option value="" selected disabled>Tender Status</option>
+              <option value="open">Open</option>
+              <option value="close">Close</option>
+              <option value="pending">Pending</option>
+              <option value="suspended">Suspended</option>
+            </select>
+
+              </div>
+             </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <label>Tender Description</label>
+                <input #tenderDescription="ngModel" type="text" value="des" class="form-control" name="tenderDescription" ngModel required>
+                <span *ngIf="tenderDescription.invalid && tenderDescription.touched" class="error">Tender description is required</span>
+              </div>
+              <div class="col">
+                <label>Date Published</label>
+                <input #datePublished="ngModel" type="date" value="dat" class="form-control" name="datePublished" ngModel required>
+                <span *ngIf="datePublished.invalid && datePublished.touched" class="error">Publish date is required</span>
+              </div>
+              <div class="col">
+                <label>Closing Date</label>
+                <input #closingDate="ngModel"  type="date" value="da" class="form-control" name="closingDate" ngModel required>
+                <span *ngIf="closingDate.invalid && closingDate.touched" class="error">Closing date is required</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+
+          </div>
+
+          <div class="form-group">
+            <h4 class="modal-title">CONTACT PERSON DETAILS</h4>
+           <div class="row">
+            <div class="col">
+              <input #InstitutionContactPerson="ngModel" value="Tender" type="text" placeholder="Name"class="form-control" name="InstitutionContactPerson" ngModel required>
+              <span  *ngIf="InstitutionContactPerson.invalid && InstitutionContactPerson.touched" class="error">Name is required</span>
+            </div>
+             <div class="col">
+              <input #InstitutionPersonEmail="ngModel" value="Ins"  type="email" required placeholder="Email"  class="form-control" name="InstitutionPersonEmail" ngModel>
+              <span *ngIf="InstitutionPersonEmail.invalid && InstitutionPersonEmail.touched" class="error">Email address is required</span>
+            </div>
+             <div class="col">
+              <input #InstitutionPersonPhone="ngModel" value="In" type="number" placeholder="Institution Phone Number" class="form-control" name="InstitutionPersonPhone" ngModel required>
+              <span *ngIf="InstitutionPersonPhone.invalid && InstitutionPersonPhone.touched" class="error">Phone number is required</span>
+            </div>
+           </div>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" [disabled]="!tenderForm.form.valid" class="btn btn-primary" value="Update Details">
+          </div>
+</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</div>

@@ -1,0 +1,57 @@
+<p>editcompany works!</p>
+<div class="jumbotron w-50 p-3">
+  <form #companyForm="ngForm" (ngSubmit)="updateCompany(companyForm.value)">
+    <div class="row">
+      <div class="col">
+        <label><b>Tender Number You are Applying To</b></label>
+        <input type="text" [(ngModel)]="tenderNumber" name="tenderNumber" class="form-control"   required>
+      </div>
+      <div class="col">
+        <label><b>Update awarded point if available</b></label>
+        <input type="text" [(ngModel)]="awardedPoint" name="awardedPoint" class="form-control" >
+      </div>
+    </div>
+    <div class="row"> <label><b>Update Company Informations</b></label></div>
+    <div class="row">
+      <div class="col">
+        <input type="text" [(ngModel)]="companyName" name="companyName" class="form-control" required>
+      </div>
+      <div class="col">
+        <input type="text" [(ngModel)]="companyRegistrationNo" name="companyRegistrationNo"  class="form-control"  required>
+      </div>
+      <div class="col">
+        <input type="number" [(ngModel)]="companyPhoneNumber"  name="companyPhoneNumber" class="form-control" >
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="text" [(ngModel)]="companyEmail" name="companyEmail" class="form-control">
+      </div>
+        <div class="col-7">
+          <input type="text" [(ngModel)]="companyAddress" name="companyAddress" class="form-control" >
+        </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="text" [(ngModel)]="directors" name="directors" class="form-control"  required>
+      </div>
+      <div class="row">
+
+        <div class="md-form">
+          <select placeholder="Choose your option" label="Example label" ngModel required name="isWinner">
+            <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+          </select>
+        </div>
+
+
+
+      </div>
+    </div>
+    <div class="row">
+       <div class="col">
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Update Company">
+        </div>
+      </div>
+    </div>
+  </form>

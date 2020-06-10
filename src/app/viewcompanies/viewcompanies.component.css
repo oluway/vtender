@@ -1,0 +1,15 @@
+.table-dark {
+  color: #fff;
+  background: dimgray;
+}
+.btn-danger {
+  position: relative;
+  left: 14px;
+}
+.btn-success {
+  color: #fff;
+  background-color: #000000;
+  border-color: #28a745;
+  font-size: 20px;
+  font-weight: bold;
+}

@@ -1,24 +1,36 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { AddcompanyComponent } from './addcompany/addcompany.component';
+import { HomeComponent } from './home/home.component';
+import { AddtenderComponent } from './addtender/addtender.component';
+import { ViewcompaniesComponent } from './viewcompanies/viewcompanies.component';
+import { EdittenderComponent } from './edittender/edittender.component';
+import { EditcompanyComponent } from './editcompany/editcompany.component';
+import { AwardedtenderComponent } from './awardedtender/awardedtender.component';
+import { TenderlistComponent } from './tenderlist/tenderlist.component';
+
 
 const routes: Routes = [
-  {
-    path: 'sliders',
-    loadChildren: () => import('./sliders/sliders.module').then( m => m.SlidersPageModule)
-  },
-  {
-    path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
-  },
-  {
-    path: 'tenderview',
-    loadChildren: () => import('./tenderview/tenderview.module').then( m => m.TenderviewPageModule)
-  }
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'addcompany', component: AddcompanyComponent },
+  { path: 'addtender', component: AddtenderComponent },
+  { path: 'viewcompanies', component: ViewcompaniesComponent },
+  { path: 'edittender', component: EdittenderComponent },
+  { path: 'editcompany', component: EditcompanyComponent },
+  { path: 'awardedtender', component: AwardedtenderComponent },
+  { path: 'tenderlist', component: TenderlistComponent },
+
+
 ];
+
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  declarations: [],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

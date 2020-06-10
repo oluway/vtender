@@ -1,0 +1,85 @@
+<p class="text-center">EDIT TENDER INFORMATION</p>
+<!-- BEGINNING OF EDIT TENDER MODAL-->
+
+
+       <div class="jumbotron jumbotron-fluid">
+        <form #tenderForm="ngForm" (ngSubmit)="updateTender(tenderForm.value)">
+          <div class="form-group">
+             <div class="row">
+               <div class="col">
+                <div class="form-group">
+                  <label for="tenderNumber">Tender Number</label>
+                  <input type="text" class="form-control" id="tenderInfo" required [(ngModel)]="tenderInfo" name="tenderNumber">
+
+                </div>
+              </div>
+               <div class="col">
+                <div class="form-group">
+                  <label for="category">Category</label>
+                  <input type="text" class="form-control" id="category" required [(ngModel)]="category" name="category">
+                  <!-- <span *ngIf="category.invalid && category.touched" class="error">Category is required</span> -->
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="md-form">
+                  <select placeholder="Choose your option" label="Example label" ngModel required name="tenderStatus">
+                    <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+                  </select>
+                </div>
+
+              </div>
+             </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label for="tenderDescription">Tender Description</label>
+                  <input type="text" class="form-control" id="tenderDescription" required [(ngModel)]="tenderDescription" name="tenderDescription">
+                </div>
+              </div>
+
+              <div class="col">
+                <div class="form-group">
+                <label for="datePublished">Date Published</label>
+                <input id="datePublished" type="date"  class="form-control" name="datePublished" [(ngModel)]="datePublished" required>
+              </div>
+            </div>
+              <div class="col">
+                <label for="closingDate">Close Published</label>
+                <input id="closingDate" type="date" class="form-control" name="closingDate" [(ngModel)]="closingDate" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+
+          </div>
+
+          <div class="form-group">
+            <h4 class="modal-title">CONTACT PERSON DETAILS</h4>
+           <div class="row">
+            <div class="col">
+              <label for="InstitutionContactPerson">Name</label>
+              <input  [(ngModel)]="InstitutionContactPerson" type="text" class="form-control" name="InstitutionContactPerson" required>
+            </div>
+             <div class="col">
+              <label for="InstitutionPersonEmail">Email Address</label>
+              <input [(ngModel)]="InstitutionPersonEmail"  type="email" required class="form-control" name="InstitutionPersonEmail">
+            </div>
+             <div class="col">
+              <label for="InstitutionPersonPhone">Phone Number</label>
+              <input  [(ngModel)]="InstitutionPersonPhone" type="number"  class="form-control" name="InstitutionPersonPhone" required>
+            </div>
+           </div>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" [disabled]="!tenderForm.form.valid" class="btn btn-primary" value="Update Details">
+          </div>
+</form>
+      </div>
+
+

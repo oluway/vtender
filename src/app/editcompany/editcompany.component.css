@@ -1,0 +1,14 @@
+.jumbotron {
+  margin: 0px auto !important;
+}
+label {
+  display: inline-block;
+  margin-bottom: -1.5rem;
+}
+
+.btn-primary {
+  background-color: #512fad;
+  border: 1px solid #fff;
+  color: #fff;
+  font-weight: 400;
+}

@@ -1,0 +1,128 @@
+<div class="container" >
+  <section *ngIf="validtend">
+      <div id="header" class="header jumbotron jumbotron-fluid">
+        <h1 class="display-4 hello">Tender Fraud Detector</h1>
+
+            <p class="introtest">Over the past four years, a number of companies have lost tens of thousands of Rands due to alleged fraudulent request for quotations (RFQS). <br>
+            With this software, companies or individual can verify the authenticity of Tender(RFQS), and also assist bidders to detect curuption and discripancies in awarded tender <br>
+            </p>
+
+      </div>
+    </section>
+    <section #section1 *ngIf="isShown">
+      <div class="flex">
+          <div><img  src="../assets/verify.png" class="image-size"><br>
+            <div class="col text-center">
+              <button id="verify" (click)="open()" class="btn btn-primary">Verify Tender</button>
+            </div>
+          </div>
+          <div><img src="../assets/verify.png" class="image-size"><br>
+            <div class="col text-center">
+              <button routerLink="/tenderlist" id="viewtenders" class="btn btn-primary">View Tenders</button>
+            </div>
+          </div>
+          <div ><img src="../assets/download.png" class="resize"><br>
+            <div class="col text-center">
+              <a href="http://www.olumide.co.za/vtender/vtender.apk" class="btn btn-primary" download>Download App</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <section id="section2" class="olu">
+      <div id="panel"></div>
+
+      <div class="hide">
+          <table id="tendertable">
+                  <colgroup>
+                      <col class="twenty" />
+                      <col class="fourty" />
+                      <col class="thirtyfive" />
+                      <col class="twentyfive" />
+                  </colgroup>
+                 <tr>
+                      <th onclick="sortTable(0)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspCategory</th>
+                      <th onclick="sortTable(1)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspTender Description</th>
+                      <th onclick="sortTable(2)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspTender No</th>
+                      <th onclick="sortTable(3)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspDate published</th>
+                      <th onclick="sortTable(4)"><span class="glyphicon glyphicon-sort"></span>&nbsp&nbspClosing date & time</th>
+                  </tr>
+              </table>
+          </div>
+    </section>
+
+     <div class="container text-center" *ngIf="showForm">
+      <label *ngIf="ifEmpty"  class="empty" >{{errorMsg}}</label>
+            <div >
+              <label for="inputTenderNumber" >
+                <b class="size">Enter Tender Number</b>
+              </label><br>
+              <input type="text" name="inputTenderNumber" [(ngModel)]="inputTenderNumber">
+            </div>
+           <div>
+            <button class="btn btn-primary secondbtn" (click)="veryfyTender()" >Verify Tender</button>
+           </div>
+     </div>
+  </div>
+
+  <div class="card" *ngIf="isValidTender">
+    <h5 class="card-header">Valid Tender</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{ tenderNumber }}</h5>
+      <p class="card-text">{{ tenderDescription }}</p>
+
+      <div class="row">
+        <div class="col">
+            <div class="card-header card-opacity">
+              Tender Details
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Category: {{ category }}</li>
+              <li class="list-group-item">Published Data: {{ datePublished }}</li>
+              <li class="list-group-item">Closing Date: {{ closingDate }}</li>
+              <li class="list-group-item">Stutus: {{ tenderStatus }}</li>
+            </ul>
+        </div>
+        <div class="col">
+
+            <div class="card-header card-opacity">
+              Institution Details
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Dep: {{ nameOfInstitution }}</li>
+              <li class="list-group-item">Contact Person: {{ InstitutionContactPerson }}</li>
+              <li class="list-group-item">Phone: {{ InstitutionPersonPhone }}</li>
+              <li class="list-group-item">Email: {{ InstitutionPersonEmail }}</li>
+              <li class="list-group-item">Offical Location: {{ officalLocation }}</li>
+            </ul>
+          </div>
+
+      </div>
+
+      <a (click)="reloadPage()" class="btn btn-primary">Check Another Tender</a>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+
+
+  <div *ngIf="inValidTender">
+  <div class="card" style="width: 18rem;">
+    <div class="card-body danger">
+      <h5 class="card-title">ALERT!!!</h5>
+      <h6 class="card-subtitle mb-2 olu">Are you sure the tender number is correct?</h6>
+      <p class="card-text">WE DO NOT HAVE A RECORD OF TENDER NUMBER  {{ tenderNumber }}</p>
+      <a (click)="reloadPage()" class="btn btn-primary">Check Another Tender</a>
+    </div>
+  </div>
+  </div>
+<!-- Spinner -->
+
+<div class="d-flex justify-content-center" *ngIf="spinner">
+  <div class="spinner-grow" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+<!-- Footer -->
+  <div class="footer introtest">
+    <p >Team-279 | inspired by Andela & Facebook</p>
+  </div>

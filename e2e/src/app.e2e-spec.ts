@@ -1,6 +1,7 @@
 import { AppPage } from './app.po';
+import { browser, logging } from 'protractor';
 
-describe('new App', () => {
+describe('workspace-project App', () => {
   let page: AppPage;
 
   beforeEach(() => {
@@ -9,6 +10,14 @@ describe('new App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getPageTitle()).toContain('Tab 1');
+    expect(page.getTitleText()).toEqual('vTender app is running!');
+  });
+
+  afterEach(async () => {
+    // Assert that there are no errors emitted from the browser
+    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
+    expect(logs).not.toContain(jasmine.objectContaining({
+      level: logging.Level.SEVERE,
+    } as logging.Entry));
   });
 });

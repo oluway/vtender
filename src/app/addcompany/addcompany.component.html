@@ -1,0 +1,59 @@
+<p> Welcome <b>Username</b> <a routerLink="/addtender">Go to Add Tender Page</a> </p>
+<div class="jumbotron w-50 p-3">
+  <form #companyForm="ngForm" (ngSubmit)="createCompany(companyForm.value)">
+    <div class="row">
+      <div class="col">
+        <label><b>Tender Number You are Applying To</b></label>
+        <input type="text" name="tenderNumber" class="form-control" placeholder="Tender Number" ngModel required>
+      </div>
+      <div class="col">
+        <label><b>Update awarded point if available</b></label>
+        <input type="text" name="awardedPoint" class="form-control" placeholder="0.00" ngModel>
+      </div>
+    </div>
+    <div class="row"> <label><b>Update Company Informations</b></label></div>
+    <div class="row">
+      <div class="col">
+        <input type="text" name="companyName" class="form-control" placeholder="Company Name" ngModel required>
+      </div>
+      <div class="col">
+        <input type="text" name="companyRegistrationNo"  class="form-control" placeholder="Registration Number" ngModel required>
+      </div>
+      <div class="col">
+        <input type="number" name="companyPhoneNumber" class="form-control" placeholder="Phone Number" ngModel required>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="text" name="companyEmail" class="form-control" placeholder="Email Address" ngModel required>
+      </div>
+        <div class="col-7">
+          <input type="text" name="companyAddress" class="form-control" placeholder="Physical Address" ngModel required>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <input type="text" name="directors" class="form-control" placeholder="Directors(s)" ngModel required>
+      </div>
+      <div class="row">
+        <div class="md-form">
+          <select placeholder="Choose your option" label="Example label" ngModel required name="isWinner">
+            <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+       <div class="col">
+        <div class="form-group">
+          <input type="submit" class="btn btn-primary" value="Update Company">
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+
+</div>
+
+

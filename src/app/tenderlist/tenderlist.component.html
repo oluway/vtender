@@ -1,0 +1,27 @@
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">Avalable Tenders</h1>
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Tender Number</th>
+          <th scope="col">Catagory</th>
+          <th scope="col">Description</th>
+          <th scope="col">Name of Institution</th>
+          <th scope="col">Date Published</th>
+          <th scope="col">Closing Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tender of tenders">
+          <th scope="row">{{tender.tenderNumber}}</th>
+          <td>{{tender.category}}</td>
+          <td>{{tender.tenderDescription}}</td>
+          <td>{{tender.nameOfInstitution}}</td>
+          <td>{{tender.datePublished}}</td>
+          <td>{{tender.closingDate}}</td>
+        </tr>
+
+      </tbody>
+    </table>  </div>
+</div>
